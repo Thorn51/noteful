@@ -1,0 +1,18 @@
+.main_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.main_sidebar {
+  flex: 1;
+  height: 75vh;
+  border: 2px solid black;
+  padding: 15px;
+}
+
+.main_content {
+  flex: 2;
+  height: 75vh;
+  border: 2px solid black;
+  padding: 15px;
+}

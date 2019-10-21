@@ -1,4 +1,5 @@
 import React from "react";
+import "./Main.css";
 
 export default class Main extends React.Component {
   render() {
@@ -6,7 +7,7 @@ export default class Main extends React.Component {
       <div className="main_container">
         <section className="main_sidebar">
           <h2>Folder Section</h2>
-          <button className="main_add_folder_button"></button>
+          <button className="main_add_folder_button">Add Folder</button>
         </section>
         <section className="main_content">
           <h2>Notes Section</h2>
