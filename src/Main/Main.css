@@ -11,8 +11,41 @@
 }
 
 .main_content {
-  flex: 2;
+  flex: 3;
   height: 75vh;
   border: 2px solid black;
   padding: 15px;
+}
+
+.folder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  border: lightgray solid 1px;
+  margin: 10px;
+}
+
+.note {
+  margin: 10px;
+  border: lightgray solid 1px;
+}
+
+.note_name {
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.note_modification {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modification_date {
+  margin: 10px;
+}
+
+.note_delete {
+  margin: 10px;
 }

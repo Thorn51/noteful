@@ -16,12 +16,14 @@ export default class Main extends React.Component {
     const noteList = Object.keys(store.notes).map(key => {
       return (
         <div key={store.notes[key].id} className="note">
-          <h2>{store.notes[key].name}</h2>
-          <p>
-            Date modified:{" "}
-            {moment(store.notes[key].modified).format("Do, MMM YYYY")}
-          </p>
-          <button>Delete</button>
+          <h2 className="note_name">{store.notes[key].name}</h2>
+          <div className="note_modification">
+            <div className="modification_date">
+              Date modified -{" "}
+              {moment(store.notes[key].modified).format("Do, MMM YYYY")}
+            </div>
+            <button className="note_delete">Delete Note</button>
+          </div>
         </div>
       );
     });
