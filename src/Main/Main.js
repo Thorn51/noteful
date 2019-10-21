@@ -1,6 +1,7 @@
 import React from "react";
 import "./Main.css";
 import store from "../store";
+import moment from "moment";
 
 export default class Main extends React.Component {
   render() {
@@ -16,7 +17,10 @@ export default class Main extends React.Component {
       return (
         <div key={store.notes[key].id} className="note">
           <h2>{store.notes[key].name}</h2>
-          {store.notes[key].modified}
+          <p>
+            Date modified:{" "}
+            {moment(store.notes[key].modified).format("Do, MMM YYYY")}
+          </p>
           <button>Delete</button>
         </div>
       );
