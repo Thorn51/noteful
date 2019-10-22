@@ -128,6 +128,8 @@ table {
   border-spacing: 0;
 }
 
+/* Header */
+
 .App_header {
   background: grey;
   color: white;
@@ -141,4 +143,27 @@ table {
   font-size: 3rem;
   font-weight: bolder;
   line-height: 9rem;
+}
+
+.App_title,
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* App Main */
+
+.app_main {
+  display: flex;
+  flex-direction: row;
+}
+
+.folder_sidebar {
+  flex: 1;
+  padding: 15px;
+}
+
+.notes_section {
+  flex: 3;
+  padding: 15px;
 }
