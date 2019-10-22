@@ -156,14 +156,17 @@ a {
 .app_main {
   display: flex;
   flex-direction: row;
+  border: 1px solid lightgray;
 }
 
 .folder_sidebar {
   flex: 1;
   padding: 15px;
+  border: 1px solid lightgray;
 }
 
 .notes_section {
   flex: 3;
   padding: 15px;
+  border: 1px solid lightgray;
 }

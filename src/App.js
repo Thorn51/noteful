@@ -16,6 +16,7 @@ export default class App extends React.Component {
         </header>
         <main className="app_main">
           <aside className="folder_sidebar">
+            <h2>Folders</h2>
             <Route
               exact
               path="/"
@@ -23,6 +24,7 @@ export default class App extends React.Component {
             />
           </aside>
           <section className="notes_section">
+            <h2>Notes</h2>
             <Route
               exact
               path="/"
