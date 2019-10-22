@@ -22,6 +22,10 @@ export default class App extends React.Component {
               path="/"
               render={props => <Sidebar {...props} {...store} />}
             />
+            <Route
+              path="/folder"
+              render={props => <Sidebar {...props} {...store} />}
+            />
           </aside>
           <section className="notes_section">
             <h2>Notes</h2>
@@ -29,6 +33,13 @@ export default class App extends React.Component {
               exact
               path="/"
               render={props => <Main {...props} {...store} />}
+            />
+            <Route
+              path="/folder/:folderId"
+              component={props => {
+                console.log(props.match);
+                return <div />;
+              }}
             />
           </section>
         </main>
