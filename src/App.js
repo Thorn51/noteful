@@ -26,6 +26,7 @@ export default class App extends React.Component {
               path="/folder"
               render={props => <Sidebar {...props} {...store} />}
             />
+            <button className="add_folder">Add Folder</button>
           </aside>
           <section className="notes_section">
             <h2>Notes</h2>
@@ -41,6 +42,7 @@ export default class App extends React.Component {
                 return <div />;
               }}
             />
+            <button className="add_note">Add Note</button>
           </section>
         </main>
       </div>
