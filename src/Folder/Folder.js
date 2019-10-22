@@ -4,7 +4,6 @@ export default function Folder(props) {
   const folderNotes = props.notes.filter(
     note => note.folderId === props.match.params.folderId
   );
-  console.log(folderNotes);
   const notes = Object.keys(folderNotes).map(key => {
     return (
       <div key={folderNotes[key].id} className="note">
