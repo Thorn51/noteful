@@ -1,12 +1,18 @@
 import React from "react";
+import "./Main.css";
+import moment from "moment";
 
 export default function Main(props) {
   const noteList = Object.keys(props.notes).map(key => {
     return (
       <div key={props.notes[key].id} className="note">
         <h2 className="note_name">{props.notes[key].name}</h2>
-        <div>
-          <p className="mod_date">{props.notes[key].modified}</p>
+        <div className="note_modification">
+          <p className="mod_date">
+            {" "}
+            Date modified on {""}
+            {moment(props.notes[key].modified).format("Do MMM YYYY")}
+          </p>
           <button className="delete_note">Delete Note</button>
         </div>
       </div>
