@@ -1,7 +1,5 @@
 import React from "react";
 
-export default class Note extends React.Component {
-  render() {
-    return null;
-  }
+export default function Note() {
+  return null;
 }
