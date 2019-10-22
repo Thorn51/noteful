@@ -15,5 +15,10 @@ export default function Sidebar(props) {
       </NavLink>
     );
   });
-  return <section className="folder_list">{folderList}</section>;
+  return (
+    <aside className="folder_sidebar">
+      <section className="folder_list">{folderList}</section>
+      <button className="add_folder">Add Folder</button>
+    </aside>
+  );
 }

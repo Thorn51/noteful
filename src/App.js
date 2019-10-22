@@ -18,23 +18,19 @@ export default class App extends React.Component {
           </Link>
         </header>
         <main className="app_main">
-          <aside className="folder_sidebar">
-            <h2>Folders</h2>
-            <Route
-              exact
-              path="/"
-              render={props => <Sidebar {...props} {...store} />}
-            />
-            <Route
-              path="/folder"
-              render={props => <Sidebar {...props} {...store} />}
-            />
-            <Route
-              path="/note"
-              render={props => <NoteSidebar {...props} {...store} />}
-            />
-            <button className="add_folder">Add Folder</button>
-          </aside>
+          <Route
+            exact
+            path="/"
+            render={props => <Sidebar {...props} {...store} />}
+          />
+          <Route
+            path="/folder"
+            render={props => <Sidebar {...props} {...store} />}
+          />
+          <Route
+            path="/note"
+            render={props => <NoteSidebar {...props} {...store} />}
+          />
           <Route
             exact
             path="/"
