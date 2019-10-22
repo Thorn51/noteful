@@ -35,23 +35,19 @@ export default class App extends React.Component {
             />
             <button className="add_folder">Add Folder</button>
           </aside>
-          <section className="notes_section">
-            <h2>Notes</h2>
-            <Route
-              exact
-              path="/"
-              render={props => <Main {...props} {...store} />}
-            />
-            <Route
-              path="/folder/:folderId"
-              component={props => <Folder {...props} {...store} />}
-            />
-            <Route
-              path="/note/:noteId"
-              component={props => <NoteMain {...props} {...store} />}
-            />
-            <button className="add_note">Add Note</button>
-          </section>
+          <Route
+            exact
+            path="/"
+            render={props => <Main {...props} {...store} />}
+          />
+          <Route
+            path="/folder/:folderId"
+            component={props => <Folder {...props} {...store} />}
+          />
+          <Route
+            path="/note/:noteId"
+            component={props => <NoteMain {...props} {...store} />}
+          />
         </main>
       </div>
     );

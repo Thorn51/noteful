@@ -21,5 +21,10 @@ export default function Main(props) {
       </div>
     );
   });
-  return <div className="note_list">{noteList}</div>;
+  return (
+    <section className="notes_section">
+      <div className="note_list">{noteList}</div>
+      <button className="add_note">Add Note</button>
+    </section>
+  );
 }

@@ -23,5 +23,10 @@ export default function Folder(props) {
       </div>
     );
   });
-  return <div className="folder_notes">{notes}</div>;
+  return (
+    <section className="notes_section">
+      <div className="folder_notes">{notes}</div>
+      <button className="add_note">Add Note</button>
+    </section>
+  );
 }

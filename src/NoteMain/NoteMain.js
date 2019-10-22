@@ -5,7 +5,7 @@ import "./NoteMain.css";
 export default function(props) {
   const note = props.notes.find(note => note.id === props.match.params.noteId);
   return (
-    <section className="note_content">
+    <section className="notes_section">
       <div className="note">
         <h2 className="note_name">{note.name}</h2>
         <div className="note_modification">
