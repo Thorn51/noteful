@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment";
+import "./NoteMain.css";
 
 export default function(props) {
   const note = props.notes.find(note => note.id === props.match.params.noteId);
-  console.log(note);
   return (
     <section className="note_content">
       <div className="note">
