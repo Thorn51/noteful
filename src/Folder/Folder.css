@@ -1,0 +1,23 @@
+.note {
+  margin: 10px;
+  border: lightgray solid 1px;
+}
+
+.note_name {
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.note_modification {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mod_date {
+  margin: 10px;
+}
+
+.delete_note {
+  margin: 10px;
+}
