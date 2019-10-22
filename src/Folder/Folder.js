@@ -1,14 +1,16 @@
 import React from "react";
-import store from "../store";
 
 export default function Folder(props) {
-  const folderNotes = store.notes.find(
+  const folderNotes = props.notes.filter(
     note => note.folderId === props.match.params.folderId
   );
   console.log(folderNotes);
-  return nul(
-    <section className="folder_notes">
-      <p>Place Holder</p>
-    </section>
-  );
+  const notes = Object.keys(folderNotes).map(key => {
+    return (
+      <div key={folderNotes[key].id} className="note">
+        <h2>{folderNotes[key].name}</h2>
+      </div>
+    );
+  });
+  return <div className="folder_notes">{notes}</div>;
 }

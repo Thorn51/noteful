@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 import Main from "./Main/Main";
+import Folder from "./Folder/Folder";
 import store from "./store";
 
 export default class App extends React.Component {
@@ -37,10 +38,7 @@ export default class App extends React.Component {
             />
             <Route
               path="/folder/:folderId"
-              component={props => {
-                console.log(props.match);
-                return <div />;
-              }}
+              component={props => <Folder {...props} {...store} />}
             />
             <button className="add_note">Add Note</button>
           </section>
