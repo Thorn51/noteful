@@ -10,3 +10,14 @@
 .folder_name {
   font-size: 1.5rem;
 }
+
+a {
+  list-style: none;
+  color: black;
+}
+
+.active > .folder {
+  background: rgb(83, 153, 83);
+  color: white;
+  border: 2px solid rgb(1, 83, 1);
+}
