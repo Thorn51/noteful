@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import "./Folder.css";
 
@@ -9,7 +10,9 @@ export default function Folder(props) {
   const notes = Object.keys(folderNotes).map(key => {
     return (
       <div key={folderNotes[key].id} className="note">
-        <h2 className="note_name">{folderNotes[key].name}</h2>
+        <Link to={`file/${folderNotes[key].id}`}>
+          <h2 className="note_name">{folderNotes[key].name}</h2>
+        </Link>
         <div className="note_modification">
           <p className="mod_date">
             Date modified on {""}
