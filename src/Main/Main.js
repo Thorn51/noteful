@@ -7,7 +7,7 @@ export default function Main(props) {
   const noteList = Object.keys(props.notes).map(key => {
     return (
       <div key={props.notes[key].id} className="note">
-        <Link to={`/note/props.notes[key].id`}>
+        <Link to={`/note/${props.notes[key].id}`}>
           <h2 className="note_name">{props.notes[key].name}</h2>
         </Link>
         <div className="note_modification">

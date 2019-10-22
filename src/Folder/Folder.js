@@ -10,7 +10,7 @@ export default function Folder(props) {
   const notes = Object.keys(folderNotes).map(key => {
     return (
       <div key={folderNotes[key].id} className="note">
-        <Link to={`file/${folderNotes[key].id}`}>
+        <Link to={`/note/${folderNotes[key].id}`}>
           <h2 className="note_name">{folderNotes[key].name}</h2>
         </Link>
         <div className="note_modification">

@@ -4,6 +4,8 @@ import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 import Main from "./Main/Main";
 import Folder from "./Folder/Folder";
+import NoteSidebar from "./NoteSidebar/NoteSidebar";
+import NoteMain from "./NoteMain/NoteMain";
 import store from "./store";
 
 export default class App extends React.Component {
@@ -27,6 +29,10 @@ export default class App extends React.Component {
               path="/folder"
               render={props => <Sidebar {...props} {...store} />}
             />
+            <Route
+              path="/note"
+              render={props => <NoteSidebar {...props} {...store} />}
+            />
             <button className="add_folder">Add Folder</button>
           </aside>
           <section className="notes_section">
@@ -39,6 +45,10 @@ export default class App extends React.Component {
             <Route
               path="/folder/:folderId"
               component={props => <Folder {...props} {...store} />}
+            />
+            <Route
+              path="/note/:noteId"
+              component={props => <NoteMain {...props} {...store} />}
             />
             <button className="add_note">Add Note</button>
           </section>
