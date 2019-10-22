@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 import Main from "./Main/Main";
+import store from "./store";
 
 export default class App extends React.Component {
   render() {
@@ -13,11 +14,21 @@ export default class App extends React.Component {
             <h1 className="App_title">Noteful</h1>
           </Link>
         </header>
-        <aside className="sidebar">
-          <Route exact path="/" component={Sidebar} />
-        </aside>
-        <main>
-          <Route exact path="/" component={Main} />
+        <main className="app_main">
+          <aside className="folder_sidebar">
+            <Route
+              exact
+              path="/"
+              render={props => <Sidebar {...props} {...store} />}
+            />
+          </aside>
+          <section className="notes_section">
+            <Route
+              exact
+              path="/"
+              render={props => <Main {...props} {...store} />}
+            />
+          </section>
         </main>
       </div>
     );
