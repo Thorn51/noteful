@@ -1,0 +1,21 @@
+.note_location {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 75px;
+  margin: 10px;
+}
+
+.back_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  height: 40px;
+  border: lightgray solid 1px;
+}
+
+.back_button,
+h2 {
+  font-size: 1.5rem;
+}

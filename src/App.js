@@ -28,7 +28,7 @@ export default class App extends React.Component {
             render={props => <Sidebar {...props} {...store} />}
           />
           <Route
-            path="/note"
+            path="/note/:noteId"
             render={props => <NoteSidebar {...props} {...store} />}
           />
           <Route
