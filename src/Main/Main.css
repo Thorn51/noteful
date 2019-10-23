@@ -19,5 +19,25 @@
 }
 
 .delete_note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
   margin: 10px;
+  font-weight: bolder;
+  border: 1px solid lightgray;
+  background: white;
+}
+
+.add_note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  margin: 10px;
+  font-weight: bolder;
+  border: 1px solid lightgray;
+  background: white;
 }

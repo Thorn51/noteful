@@ -18,6 +18,7 @@ export default class App extends React.Component {
           </Link>
         </header>
         <main className="app_main">
+          {/* Sidebar */}
           <Route
             exact
             path="/"
@@ -31,6 +32,8 @@ export default class App extends React.Component {
             path="/note/:noteId"
             render={props => <NoteSidebar {...props} {...store} />}
           />
+
+          {/* Main */}
           <Route
             exact
             path="/"

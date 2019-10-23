@@ -18,7 +18,7 @@ export default function Sidebar(props) {
   return (
     <aside className="folder_sidebar">
       <section className="folder_list">{folderList}</section>
-      <button className="add_folder">Add Folder</button>
+      <div className="add_folder">Add Folder</div>
     </aside>
   );
 }
