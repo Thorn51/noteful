@@ -7,9 +7,18 @@ import Folder from "./Folder/Folder";
 import NoteSidebar from "./NoteSidebar/NoteSidebar";
 import NoteMain from "./NoteMain/NoteMain";
 import store from "./store";
+import NoteContext from "./NoteContext";
 
 export default class App extends React.Component {
+  state = {
+    folders: store.folders,
+    notes: store.notes
+  };
   render() {
+    const contextValue = {
+      folders: this.state.folders,
+      notes: this.state.notes
+    };
     return (
       <div>
         <header className="App_header">
@@ -18,35 +27,17 @@ export default class App extends React.Component {
           </Link>
         </header>
         <main className="app_main">
-          {/* Sidebar */}
-          <Route
-            exact
-            path="/"
-            render={props => <Sidebar {...props} {...store} />}
-          />
-          <Route
-            path="/folder"
-            render={props => <Sidebar {...props} {...store} />}
-          />
-          <Route
-            path="/note/:noteId"
-            render={props => <NoteSidebar {...props} {...store} />}
-          />
+          <NoteContext.Provider value={contextValue}>
+            {/* Sidebar */}
+            <Route exact path="/" component={Sidebar} />
+            <Route path="/folder" component={Sidebar} />
+            <Route path="/note/:noteId" component={NoteSidebar} />
 
-          {/* Main */}
-          <Route
-            exact
-            path="/"
-            render={props => <Main {...props} {...store} />}
-          />
-          <Route
-            path="/folder/:folderId"
-            component={props => <Folder {...props} {...store} />}
-          />
-          <Route
-            path="/note/:noteId"
-            component={props => <NoteMain {...props} {...store} />}
-          />
+            {/* Main */}
+            <Route exact path="/" component={Main} />
+            <Route path="/folder/:folderId" component={Folder} />
+            <Route path="/note/:noteId" component={NoteMain} />
+          </NoteContext.Provider>
         </main>
       </div>
     );
