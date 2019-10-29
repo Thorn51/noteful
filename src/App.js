@@ -6,14 +6,53 @@ import Main from "./Main/Main";
 import Folder from "./Folder/Folder";
 import NoteSidebar from "./NoteSidebar/NoteSidebar";
 import NoteMain from "./NoteMain/NoteMain";
-import store from "./store";
 import NoteContext from "./NoteContext";
 
 export default class App extends React.Component {
   state = {
-    folders: store.folders,
-    notes: store.notes
+    folders: [],
+    notes: []
   };
+
+  componentDidMount() {
+    fetch("http://localhost:9090/folders")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            "There has been an error fetching the folders from local host 9090"
+          );
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          folders: data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    fetch("http://localhost:9090/notes")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(
+            "There has been an error fetching the notes from local host 9090"
+          );
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          notes: data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   render() {
     const contextValue = {
       folders: this.state.folders,

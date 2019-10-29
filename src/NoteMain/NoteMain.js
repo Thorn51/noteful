@@ -3,17 +3,20 @@ import moment from "moment";
 import "./NoteMain.css";
 import NoteContext from "../NoteContext";
 
-export default function(props) {
-  return (
-    <NoteContext.Consumer>
-      {value => {
-        const note = value.notes.find(
-          note => note.id === value.match.params.noteId
-        );
-        return (
+export default class NoteMain extends React.Component {
+  static contextType = NoteContext;
+  render() {
+    const note = this.context.notes.filter(
+      note => note.id === this.props.match.params.noteId
+    );
+    return (
+      <React.Fragment>
+        {note.length === 0 ? (
+          <p>Loading</p>
+        ) : (
           <section className="notes_section">
             <div className="note">
-              <h2 className="note_name">{note.name}</h2>
+              <h2 className="note_name">{note[0].name}</h2>
               <div className="note_modification">
                 <p className="mod_date">
                   Date modified on {""}{" "}
@@ -23,11 +26,11 @@ export default function(props) {
               </div>
             </div>
             <div>
-              <p className="note_content">{note.content}</p>
+              <p className="note_content">{note[0].content}</p>
             </div>
           </section>
-        );
-      }}
-    </NoteContext.Consumer>
-  );
+        )}
+      </React.Fragment>
+    );
+  }
 }
