@@ -7,6 +7,7 @@ import Folder from "./Folder/Folder";
 import NoteSidebar from "./NoteSidebar/NoteSidebar";
 import NoteMain from "./NoteMain/NoteMain";
 import NoteContext from "./NoteContext";
+import AddFolder from "./AddFolder/AddFolder";
 
 export default class App extends React.Component {
   state = {
@@ -71,6 +72,7 @@ export default class App extends React.Component {
             <Route exact path="/" component={Sidebar} />
             <Route path="/folder" component={Sidebar} />
             <Route path="/note/:noteId" component={NoteSidebar} />
+            <Route path="/add-folder" component={AddFolder} />
 
             {/* Main */}
             <Route exact path="/" component={Main} />

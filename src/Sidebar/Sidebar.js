@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import NoteContext from "../NoteContext";
 import "./Sidebar.css";
 
@@ -21,7 +21,9 @@ export default class Sidebar extends React.Component {
     return (
       <aside className="folder_sidebar">
         <section className="folder_list">{folderList}</section>
-        <div className="add_folder">Add Folder</div>
+        <Link to={"/add-folder"}>
+          <div className="add_folder">Add Folder</div>
+        </Link>
       </aside>
     );
   }
