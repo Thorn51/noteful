@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import NoteContext from "../NoteContext";
 
 class AddFolder extends Component {
+  static contextType = NoteContext;
   constructor(props) {
     super(props);
     this.state = {
       name: ""
     };
   }
+
   newFolderName(name) {
     this.setState({
       name
@@ -37,12 +40,17 @@ class AddFolder extends Component {
           name: "",
           id: ""
         });
-        console.log(JSON.stringify(folderName));
+        this.context.addFolder(data);
+        this.props.history.goBack();
       })
       .catch(error => {
         console.log(error);
       });
   }
+
+  cancel = () => {
+    this.props.history.goBack();
+  };
 
   render() {
     return (
@@ -59,7 +67,11 @@ class AddFolder extends Component {
           />
         </div>
         <div className="add_folder_buttons">
-          <button type="reset" className="form_button">
+          <button
+            type="reset"
+            className="form_button"
+            onClick={() => this.props.history.goBack()}
+          >
             Cancel
           </button>
           <button type="submit" className="form_button">
