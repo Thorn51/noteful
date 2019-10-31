@@ -29,7 +29,9 @@ export default class Folder extends React.Component {
     return (
       <section className="notes_section">
         <div className="folder_notes">{notes}</div>
-        <button className="add_note">Add Note</button>
+        <Link to="/add-note">
+          <button className="add_note">Add Note</button>
+        </Link>
       </section>
     );
   }

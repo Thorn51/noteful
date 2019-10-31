@@ -28,7 +28,9 @@ export default function Main(props) {
         return (
           <section className="notes_section">
             <div className="note_list">{noteList}</div>
-            <button className="add_note">Add Note</button>
+            <Link to="/add-note">
+              <button className="add_note">Add Note</button>
+            </Link>
           </section>
         );
       }}

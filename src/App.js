@@ -8,6 +8,7 @@ import NoteSidebar from "./NoteSidebar/NoteSidebar";
 import NoteMain from "./NoteMain/NoteMain";
 import NoteContext from "./NoteContext";
 import AddFolder from "./AddFolder/AddFolder";
+import AddNote from "./AddNote/AddNote";
 
 export default class App extends React.Component {
   state = {
@@ -23,7 +24,7 @@ export default class App extends React.Component {
 
   addNote = note => {
     this.setState({
-      notes: [...this.setState.folder, note]
+      notes: [...this.state.notes, note]
     });
   };
 
@@ -70,7 +71,8 @@ export default class App extends React.Component {
     const contextValue = {
       folders: this.state.folders,
       notes: this.state.notes,
-      addFolder: this.addFolder
+      addFolder: this.addFolder,
+      addNote: this.addNote
     };
     return (
       <div>
@@ -91,6 +93,7 @@ export default class App extends React.Component {
             <Route exact path="/" component={Main} />
             <Route path="/folder/:folderId" component={Folder} />
             <Route path="/note/:noteId" component={NoteMain} />
+            <Route path="/add-note" component={AddNote} />
           </NoteContext.Provider>
         </main>
       </div>
