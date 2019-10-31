@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NoteContext from "../NoteContext";
+import FormValidation from "../FormValidation/FormValidation";
 
 class AddNote extends Component {
   static contextType = NoteContext;
@@ -7,15 +8,33 @@ class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      folderId: "",
-      content: ""
+      name: {
+        value: "",
+        touched: false
+      },
+      content: {
+        value: "",
+        touched: false
+      },
+      folderId: ""
     };
   }
 
   newNoteName(name) {
     this.setState({
-      name
+      name: {
+        value: name,
+        touched: true
+      }
+    });
+  }
+
+  noteContent(content) {
+    this.setState({
+      content: {
+        value: content,
+        touched: true
+      }
     });
   }
 
@@ -24,26 +43,31 @@ class AddNote extends Component {
       return folder.name === value;
     });
     const folderId = folder[0].id;
-    console.log(folder);
     this.setState({
       folderId
     });
   }
 
-  noteContent(content) {
-    this.setState({
-      content
-    });
+  validateName() {
+    if (this.state.name.value.trim().length === 0) {
+      return "A note name is required.";
+    }
+  }
+
+  validateContent() {
+    if (this.state.content.value.trim().length === 0) {
+      return "The note requires content.";
+    }
   }
 
   onSubmit(e) {
     e.preventDefault();
     const lastModified = new Date(document.lastModified);
     const note = {
-      name: this.state.name,
+      name: this.state.name.value,
       modified: lastModified,
       folderId: this.state.folderId,
-      content: this.state.content
+      content: this.state.content.value
     };
     const url = "http://localhost:9090/notes";
     const options = {
@@ -65,11 +89,16 @@ class AddNote extends Component {
       })
       .then(data => {
         this.setState({
-          name: "",
-          folderId: "",
-          content: ""
+          name: {
+            value: "",
+            touched: false
+          },
+          content: {
+            value: "",
+            touched: false
+          },
+          folderId: ""
         });
-        console.log(data);
         this.context.addNote(data);
         this.props.history.goBack();
       })
@@ -92,8 +121,12 @@ class AddNote extends Component {
             className="note_name"
             name="note_name"
             id="note_name"
+            required
             onChange={e => this.newNoteName(e.target.value)}
           />
+          {this.state.name.touched && (
+            <FormValidation message={this.validateName()} />
+          )}
         </div>
         <div className="form_group">
           <label htmlFor="folder_selection">Select a Folder</label>
@@ -101,9 +134,12 @@ class AddNote extends Component {
             className="folder_select"
             name="folder_select"
             id="folder_select"
+            required
             onChange={e => this.noteFolder(e.target.value)}
           >
-            <option>Please select a folder</option>
+            <option value="" selected>
+              Please Select a Folder
+            </option>
             {options}
           </select>
         </div>
@@ -113,9 +149,13 @@ class AddNote extends Component {
             className="note_content"
             name="note_content"
             id="note_content"
-            value={this.state.content}
+            required
+            value={this.state.content.value}
             onChange={e => this.noteContent(e.target.value)}
           />
+          {this.state.content.touched && (
+            <FormValidation message={this.validateContent()} />
+          )}
         </div>
         <div className="add_notes_buttons">
           <button
@@ -125,7 +165,11 @@ class AddNote extends Component {
           >
             Cancel
           </button>
-          <button type="submit" className="form_button">
+          <button
+            type="submit"
+            className="form_button"
+            disabled={this.validateContent() || this.validateName()}
+          >
             Save
           </button>
         </div>
