@@ -1,19 +1,29 @@
 import React, { Component } from "react";
 import NoteContext from "../NoteContext";
+import FormValidation from "../FormValidation/FormValidation";
 
 class AddFolder extends Component {
   static contextType = NoteContext;
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: "",
+      touched: false
     };
   }
 
   newFolderName(name) {
     this.setState({
-      name
+      name: name,
+      touched: true
     });
+  }
+
+  validateName() {
+    // const name = this.state.name.trim();
+    if (this.state.name.trim().length === 0) {
+      return "You must enter a name for the folder.";
+    }
   }
 
   onSubmit(event) {
@@ -38,7 +48,7 @@ class AddFolder extends Component {
       .then(data => {
         this.setState({
           name: "",
-          id: ""
+          touched: false
         });
         this.context.addFolder(data);
         this.props.history.goBack();
@@ -63,8 +73,12 @@ class AddFolder extends Component {
             className="folder_name"
             name="folder_name"
             id="folder_name"
+            required
             onChange={e => this.newFolderName(e.target.value)}
           />
+          {this.state.touched && (
+            <FormValidation message={this.validateName()} />
+          )}
         </div>
         <div className="add_folder_buttons">
           <button
@@ -74,7 +88,11 @@ class AddFolder extends Component {
           >
             Cancel
           </button>
-          <button type="submit" className="form_button">
+          <button
+            type="submit"
+            className="form_button"
+            disabled={this.validateName()}
+          >
             Save
           </button>
         </div>
