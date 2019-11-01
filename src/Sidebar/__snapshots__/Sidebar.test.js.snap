@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar renders the component as expected 1`] = `
+<aside
+  className="folder_sidebar"
+>
+  <section
+    className="folder_list"
+  />
+  <a
+    href="/add-folder"
+    onClick={[Function]}
+  >
+    <div
+      className="add_folder"
+    >
+      Add Folder
+    </div>
+  </a>
+</aside>
+`;

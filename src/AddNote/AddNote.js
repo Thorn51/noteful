@@ -138,7 +138,7 @@ class AddNote extends Component {
             required
             onChange={e => this.noteFolder(e.target.value)}
           >
-            <option value="" selected>
+            <option value="" defaultValue>
               Please Select a Folder
             </option>
             {options}

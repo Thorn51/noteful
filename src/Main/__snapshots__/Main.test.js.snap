@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main renders the component as expected 1`] = `
+<section
+  className="notes_section"
+>
+  <div
+    className="note_list"
+  />
+  <a
+    href="/add-note"
+    onClick={[Function]}
+  >
+    <button
+      className="add_note"
+    >
+      Add Note
+    </button>
+  </a>
+</section>
+`;

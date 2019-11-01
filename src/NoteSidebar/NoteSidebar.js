@@ -20,7 +20,7 @@ export default class NoteSidebar extends React.Component {
       <aside className="folder_sidebar">
         <div className="note_sidebar">
           <button
-            onClick={({ history }) => this.props.history.goBack()}
+            onClick={() => this.props.history.goBack()}
             className="back_button"
           >
             Go Back

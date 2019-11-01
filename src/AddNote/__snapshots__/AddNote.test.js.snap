@@ -41,7 +41,7 @@ exports[`AddNote renders the component as expected 1`] = `
       required={true}
     >
       <option
-        selected={true}
+        defaultValue={true}
         value=""
       >
         Please Select a Folder
