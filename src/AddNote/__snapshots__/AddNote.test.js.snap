@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddNote renders the component as expected 1`] = `
+<form
+  className="Add_note"
+  onSubmit={[Function]}
+>
+  <h2>
+    Add Note
+  </h2>
+  <div
+    className="form_group"
+  >
+    <label
+      htmlFor="note_name"
+    >
+      Name of Note
+    </label>
+    <input
+      className="note_name"
+      id="note_name"
+      name="note_name"
+      onChange={[Function]}
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="form_group"
+  >
+    <label
+      htmlFor="folder_selection"
+    >
+      Select a Folder
+    </label>
+    <select
+      className="folder_select"
+      id="folder_select"
+      name="folder_select"
+      onChange={[Function]}
+      required={true}
+    >
+      <option
+        selected={true}
+        value=""
+      >
+        Please Select a Folder
+      </option>
+    </select>
+  </div>
+  <div
+    className="form_group"
+  >
+    <label
+      htmlFor="note_content"
+    >
+      Add Notes
+    </label>
+    <textarea
+      className="note_content"
+      id="note_content"
+      name="note_content"
+      onChange={[Function]}
+      required={true}
+      value=""
+    />
+  </div>
+  <div
+    className="add_notes_buttons"
+  >
+    <button
+      className="form_button"
+      onClick={[Function]}
+      type="reset"
+    >
+      Cancel
+    </button>
+    <button
+      className="form_button"
+      disabled="The note requires content."
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;

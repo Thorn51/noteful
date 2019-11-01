@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddFolder renders the component as expected 1`] = `
+<form
+  className="Add_folder"
+  onSubmit={[Function]}
+>
+  <h2>
+    Add Folder
+  </h2>
+  <div
+    className="form_group"
+  >
+    <label
+      htmlFor="folder_name"
+    >
+      Folder Name (required)
+    </label>
+    <input
+      className="folder_name"
+      id="folder_name"
+      name="folder_name"
+      onChange={[Function]}
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="add_folder_buttons"
+  >
+    <button
+      className="form_button"
+      onClick={[Function]}
+      type="reset"
+    >
+      Cancel
+    </button>
+    <button
+      className="form_button"
+      disabled="A folder name is required."
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;
