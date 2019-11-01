@@ -9,6 +9,7 @@ import NoteMain from "./NoteMain/NoteMain";
 import NoteContext from "./NoteContext";
 import AddFolder from "./AddFolder/AddFolder";
 import AddNote from "./AddNote/AddNote";
+import MainError from "./ErrorBoundaries/MainError";
 
 export default class App extends React.Component {
   state = {
@@ -90,10 +91,12 @@ export default class App extends React.Component {
             <Route path="/add-folder" component={AddFolder} />
 
             {/* Main */}
-            <Route exact path="/" component={Main} />
-            <Route path="/folder/:folderId" component={Folder} />
-            <Route path="/note/:noteId" component={NoteMain} />
-            <Route path="/add-note" component={AddNote} />
+            <MainError>
+              <Route exact path="/" component={Main} />
+              <Route path="/folder/:folderId" component={Folder} />
+              <Route path="/note/:noteId" component={NoteMain} />
+              <Route path="/add-note" component={AddNote} />
+            </MainError>
           </NoteContext.Provider>
         </main>
       </div>
