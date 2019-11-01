@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NoteContext from "../NoteContext";
 import FormValidation from "../FormValidation/FormValidation";
+import "./AddNote.css";
 
 class AddNote extends Component {
   static contextType = NoteContext;

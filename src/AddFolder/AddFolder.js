@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NoteContext from "../NoteContext";
 import FormValidation from "../FormValidation/FormValidation";
+import "./AddFolder.css";
 
 class AddFolder extends Component {
   static contextType = NoteContext;
@@ -22,7 +23,7 @@ class AddFolder extends Component {
   validateName() {
     // const name = this.state.name.trim();
     if (this.state.name.trim().length === 0) {
-      return "You must enter a name for the folder.";
+      return "A folder name is required.";
     }
   }
 
@@ -67,7 +68,7 @@ class AddFolder extends Component {
       <form className="Add_folder" onSubmit={e => this.onSubmit(e)}>
         <h2>Add Folder</h2>
         <div className="form_group">
-          <label htmlFor="folder_name">Name of Folder</label>
+          <label htmlFor="folder_name">Folder Name (required)</label>
           <input
             type="text"
             className="folder_name"

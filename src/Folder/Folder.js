@@ -46,5 +46,11 @@ Folder.propTypes = {
       modified: PropTypes.string,
       name: PropTypes.string
     })
+  ),
+  folders: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    })
   )
 };

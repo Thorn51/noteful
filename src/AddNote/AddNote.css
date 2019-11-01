@@ -1,0 +1,13 @@
+.Add_note {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
+.add_notes_buttons {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 0 auto 0 auto;
+}

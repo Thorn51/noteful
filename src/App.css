@@ -131,7 +131,7 @@ table {
 /* Header */
 
 .App_header {
-  background: grey;
+  background: rgb(97, 97, 97);
   color: white;
   justify-content: center;
   height: 15vh;

@@ -1,0 +1,56 @@
+.Add_folder {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
+h2 {
+  text-align: center;
+  padding: 25px 0 0 0;
+  font-size: 2rem;
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+label {
+  font-size: 1.3rem;
+  padding: 0px 10px 0px 10px;
+}
+
+.folder_name {
+  margin: 10px;
+}
+
+.add_folder_buttons {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 0 auto 0 auto;
+}
+
+.form_button {
+  width: 200px;
+  height: 50px;
+  margin: 0 0 25px 0;
+  background: rgb(97, 97, 97);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.form_button:disabled {
+  color: lightgray;
+  cursor: initial;
+  font-style: oblique;
+}
+
+.error {
+  font-size: 1.3rem;
+  text-align: center;
+  color: red;
+}
