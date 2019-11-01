@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import "./Folder.css";
 import NoteContext from "../NoteContext";
+import PropTypes from "prop-types";
 
 export default class Folder extends React.Component {
   static contextType = NoteContext;
@@ -36,3 +37,14 @@ export default class Folder extends React.Component {
     );
   }
 }
+Folder.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string,
+      folderID: PropTypes.string,
+      id: PropTypes.string,
+      modified: PropTypes.string,
+      name: PropTypes.string
+    })
+  )
+};
