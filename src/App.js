@@ -31,7 +31,6 @@ export default class App extends React.Component {
 
   deleteNote = noteId => {
     const updateNotes = this.state.notes.filter(note => note.id !== noteId);
-    console.log(updateNotes);
     const options = {
       method: "DELETE"
     };
