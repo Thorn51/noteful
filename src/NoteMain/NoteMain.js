@@ -22,7 +22,12 @@ export default class NoteMain extends React.Component {
                   Date modified on {""}{" "}
                   {moment(note.modified).format("Do MMM YYY")}
                 </p>
-                <button className="delete_note">Delete Note</button>
+                <button
+                  className="delete_note"
+                  onClick={() => this.context.deleteNote(note[0].id)}
+                >
+                  Delete Note
+                </button>
               </div>
             </div>
             <div>

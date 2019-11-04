@@ -22,7 +22,12 @@ export default class Folder extends React.Component {
               Date modified on {""}
               {moment(folderNotes[key].modified).format("Do MMM YYYY")}
             </p>
-            <button className="delete_note">Delete Note</button>
+            <button
+              className="delete_note"
+              onClick={() => this.context.deleteNote(folderNotes[key].id)}
+            >
+              Delete Note
+            </button>
           </div>
         </div>
       );

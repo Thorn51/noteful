@@ -29,6 +29,31 @@ export default class App extends React.Component {
     });
   };
 
+  deleteNote = noteId => {
+    const updateNotes = this.state.notes.filter(note => note.id !== noteId);
+    console.log(updateNotes);
+    const options = {
+      method: "DELETE"
+    };
+
+    fetch("http://localhost:9090/notes/" + noteId, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("There has been a problem removing the note");
+        } else {
+          return response.json();
+        }
+      })
+      .then(data => {
+        this.setState({
+          notes: updateNotes
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   componentDidMount() {
     fetch("http://localhost:9090/folders")
       .then(response => {
@@ -73,7 +98,8 @@ export default class App extends React.Component {
       folders: this.state.folders,
       notes: this.state.notes,
       addFolder: this.addFolder,
-      addNote: this.addNote
+      addNote: this.addNote,
+      deleteNote: this.deleteNote
     };
     return (
       <div>

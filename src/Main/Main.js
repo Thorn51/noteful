@@ -20,7 +20,12 @@ export default function Main(props) {
                   Date modified on {""}
                   {moment(value.notes[key].modified).format("Do MMM YYYY")}
                 </p>
-                <button className="delete_note">Delete Note</button>
+                <button
+                  className="delete_note"
+                  onClick={() => value.deleteNote(value.notes[key].id)}
+                >
+                  Delete Note
+                </button>
               </div>
             </div>
           );
