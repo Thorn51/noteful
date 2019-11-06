@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import AddFolder from "./AddFolder";
-import renderer from "react-test-renderer";
+import { shallow } from "enzyme";
+import toJson from "enzyme-to-json";
 
 describe("AddFolder", () => {
   it("renders without throwing errors", () => {
@@ -10,7 +11,7 @@ describe("AddFolder", () => {
     ReactDOM.unmountComponentAtNode(div);
   });
   it("renders the component as expected", () => {
-    const tree = renderer.create(<AddFolder />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<AddFolder />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
