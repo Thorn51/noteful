@@ -9,13 +9,14 @@ export default class Folder extends React.Component {
   static contextType = NoteContext;
   render() {
     const folderNotes = this.context.notes.filter(
-      note => note.folderId === this.props.match.params.folderId
+      note => note.folderid === parseInt(this.props.match.params.folderId)
     );
+
     const notes = Object.keys(folderNotes).map(key => {
       return (
         <div key={folderNotes[key].id} className="note">
           <Link to={`/note/${folderNotes[key].id}`}>
-            <h2 className="note_name">{folderNotes[key].name}</h2>
+            <h2 className="note_name">{folderNotes[key].note_name}</h2>
           </Link>
           <div className="note_modification">
             <p className="mod_date">
