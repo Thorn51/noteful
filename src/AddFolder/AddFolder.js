@@ -8,29 +8,29 @@ class AddFolder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      folder_name: "",
       touched: false
     };
   }
 
   newFolderName(name) {
     this.setState({
-      name: name,
+      folder_name: name,
       touched: true
     });
   }
 
   validateName() {
     // const name = this.state.name.trim();
-    if (this.state.name.trim().length === 0) {
+    if (this.state.folder_name.trim().length === 0) {
       return "A folder name is required.";
     }
   }
 
   onSubmit(event) {
     event.preventDefault();
-    const folderName = { name: this.state.name };
-    const url = "http://localhost:9090/folders";
+    const folderName = { folder_name: this.state.folder_name };
+    const url = "http://localhost:8000/api/folders";
     const options = {
       method: "POST",
       body: JSON.stringify(folderName),
@@ -48,7 +48,7 @@ class AddFolder extends Component {
       })
       .then(data => {
         this.setState({
-          name: "",
+          folder_name: "",
           touched: false
         });
         this.context.addFolder(data);
