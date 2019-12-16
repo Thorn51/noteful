@@ -9,54 +9,55 @@ class AddNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: {
+      note_name: {
         value: "",
         touched: false
       },
-      content: {
+      note_text: {
         value: "",
         touched: false
       },
-      folderId: ""
+      folderid: ""
     };
   }
 
-  newNoteName(name) {
+  newNoteName(note_name) {
     this.setState({
-      name: {
-        value: name,
+      note_name: {
+        value: note_name,
         touched: true
       }
     });
   }
 
-  noteContent(content) {
+  noteContent(note_text) {
     this.setState({
-      content: {
-        value: content,
+      note_text: {
+        value: note_text,
         touched: true
       }
     });
   }
 
   noteFolder(value) {
-    const folder = this.context.folders.filter(folder => {
-      return folder.name === value;
-    });
-    const folderId = folder[0].id;
+    const folder = this.context.folders.filter(
+      folder => folder.folder_name === value
+    );
+    const folderid = folder[0].id;
+
     this.setState({
-      folderId
+      folderid
     });
   }
 
   validateName() {
-    if (this.state.name.value.trim().length === 0) {
+    if (this.state.note_name.value.trim().length === 0) {
       return "A note name is required.";
     }
   }
 
   validateContent() {
-    if (this.state.content.value.trim().length === 0) {
+    if (this.state.note_text.value.trim().length === 0) {
       return "The note requires content.";
     }
   }
@@ -65,12 +66,12 @@ class AddNote extends Component {
     e.preventDefault();
     const lastModified = new Date(document.lastModified);
     const note = {
-      name: this.state.name.value,
+      note_name: this.state.note_name.value,
       modified: lastModified,
-      folderId: this.state.folderId,
-      content: this.state.content.value
+      folderid: this.state.folderid,
+      note_text: this.state.note_text.value
     };
-    const url = "http://localhost:9090/notes";
+    const url = "http://localhost:8000/api/notes";
     const options = {
       method: "POST",
       body: JSON.stringify(note),
@@ -82,19 +83,20 @@ class AddNote extends Component {
       .then(response => {
         if (!response.ok) {
           throw new Error(
-            "There has been a problem posting to localhost:9090/notes"
+            "There has been a problem posting to localhost:8000/api/notes"
           );
         } else {
           return response.json();
         }
       })
       .then(data => {
+        console.log(data);
         this.setState({
-          name: {
+          note_name: {
             value: "",
             touched: false
           },
-          content: {
+          note_text: {
             value: "",
             touched: false
           },
@@ -110,7 +112,7 @@ class AddNote extends Component {
 
   render() {
     const options = this.context.folders.map(option => {
-      return <option key={option.id}>{option.name}</option>;
+      return <option key={option.id}>{option.folder_name}</option>;
     });
     return (
       <form className="Add_note" onSubmit={e => this.onSubmit(e)}>
@@ -125,7 +127,7 @@ class AddNote extends Component {
             required
             onChange={e => this.newNoteName(e.target.value)}
           />
-          {this.state.name.touched && (
+          {this.state.note_name.touched && (
             <FormValidation message={this.validateName()} />
           )}
         </div>
@@ -151,10 +153,10 @@ class AddNote extends Component {
             name="note_content"
             id="note_content"
             required
-            value={this.state.content.value}
+            value={this.state.note_text.value}
             onChange={e => this.noteContent(e.target.value)}
           />
-          {this.state.content.touched && (
+          {this.state.note_text.touched && (
             <FormValidation message={this.validateContent()} />
           )}
         </div>
