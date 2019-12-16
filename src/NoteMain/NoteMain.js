@@ -6,17 +6,21 @@ import NoteContext from "../NoteContext";
 export default class NoteMain extends React.Component {
   static contextType = NoteContext;
   render() {
-    const note = this.context.notes.filter(
-      note => note.id === this.props.match.params.noteId
-    );
+    const notes = this.context.notes;
+
+    const note =
+      notes.length === 0
+        ? "Loading Notes"
+        : this.context.notes[this.props.match.params.noteId - 1];
+
     return (
       <React.Fragment>
-        {note.length === 0 ? (
-          <p>Loading</p>
+        {notes.length === 0 ? (
+          <p>Loading Notes...</p>
         ) : (
           <section className="notes_section">
             <div className="note">
-              <h2 className="note_name">{note[0].name}</h2>
+              <h2 className="note_name">{note.note_name}</h2>
               <div className="note_modification">
                 <p className="mod_date">
                   Date modified on {""}{" "}
@@ -24,14 +28,14 @@ export default class NoteMain extends React.Component {
                 </p>
                 <button
                   className="delete_note"
-                  onClick={() => this.context.deleteNote(note[0].id)}
+                  onClick={() => this.context.deleteNote()}
                 >
                   Delete Note
                 </button>
               </div>
             </div>
             <div>
-              <p className="note_content">{note[0].content}</p>
+              <p className="note_content">{note.note_text}</p>
             </div>
           </section>
         )}

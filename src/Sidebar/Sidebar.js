@@ -5,6 +5,7 @@ import "./Sidebar.css";
 
 export default class Sidebar extends React.Component {
   static contextType = NoteContext;
+
   render() {
     const folderList = Object.keys(this.context.folders).map(key => {
       return (
@@ -13,7 +14,9 @@ export default class Sidebar extends React.Component {
           key={this.context.folders[key].id}
         >
           <div className="folder">
-            <h2 className="folder_name">{this.context.folders[key].name}</h2>
+            <h2 className="folder_name">
+              {this.context.folders[key].folder_name}
+            </h2>
           </div>
         </NavLink>
       );
