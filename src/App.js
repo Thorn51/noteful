@@ -35,7 +35,9 @@ export default class App extends React.Component {
       method: "DELETE"
     };
 
-    fetch("http://localhost:9090/notes/" + noteId, options)
+    console.log(noteId);
+
+    fetch("http://localhost:8000/api/notes/" + noteId, options)
       .then(response => {
         if (!response.ok) {
           throw new Error("There has been a problem removing the note");
@@ -54,7 +56,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:9090/folders")
+    fetch("http://localhost:8000/api/folders")
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -73,7 +75,7 @@ export default class App extends React.Component {
         console.log(error);
       });
 
-    fetch("http://localhost:9090/notes")
+    fetch("http://localhost:8000/api/notes")
       .then(response => {
         if (!response.ok) {
           throw new Error(
@@ -100,6 +102,7 @@ export default class App extends React.Component {
       addNote: this.addNote,
       deleteNote: this.deleteNote
     };
+
     return (
       <div>
         <header className="App_header">
