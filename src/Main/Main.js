@@ -12,7 +12,7 @@ export default function Main(props) {
           return (
             <div key={value.notes[key].id} className="note">
               <Link to={`/note/${value.notes[key].id}`}>
-                <h2 className="note_name">{value.notes[key].name}</h2>
+                <h2 className="note_name">{value.notes[key].note_name}</h2>
               </Link>
               <div className="note_modification">
                 <p className="mod_date">
