@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NoteContext from "../NoteContext";
 import FormValidation from "../FormValidation/FormValidation";
 import "./AddNote.css";
+import config from "../config";
 
 class AddNote extends Component {
   static contextType = NoteContext;
@@ -71,20 +72,19 @@ class AddNote extends Component {
       folderid: this.state.folderid,
       note_text: this.state.note_text.value
     };
-    const url = "http://localhost:8000/api/notes";
+    const fetchUrl = config.API_ENDPOINT + "/api/notes";
     const options = {
       method: "POST",
       body: JSON.stringify(note),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + config.API_TOKEN
       }
     };
-    fetch(url, options)
+    fetch(fetchUrl, options)
       .then(response => {
         if (!response.ok) {
-          throw new Error(
-            "There has been a problem posting to localhost:8000/api/notes"
-          );
+          throw new Error("There has been a problem posting to notes");
         } else {
           return response.json();
         }

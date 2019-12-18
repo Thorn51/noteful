@@ -10,6 +10,7 @@ import NoteContext from "./NoteContext";
 import AddFolder from "./AddFolder/AddFolder";
 import AddNote from "./AddNote/AddNote";
 import MainError from "./ErrorBoundaries/MainError";
+import config from "./config";
 
 export default class App extends React.Component {
   state = {
@@ -31,21 +32,22 @@ export default class App extends React.Component {
 
   deleteNote = noteId => {
     const updateNotes = this.state.notes.filter(note => note.id !== noteId);
+    const fetchUrl = config.API_ENDPOINT + "/api/notes/" + noteId;
     const options = {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + config.API_TOKEN
+      }
     };
 
-    console.log(noteId);
-
-    fetch("http://localhost:8000/api/notes/" + noteId, options)
+    fetch(fetchUrl, options)
       .then(response => {
         if (!response.ok) {
           throw new Error("There has been a problem removing the note");
-        } else {
-          return response.json();
         }
       })
-      .then(data => {
+      .then(() => {
         this.setState({
           notes: updateNotes
         });
@@ -56,12 +58,20 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:8000/api/folders")
+    const fetchFoldersUrl = config.API_ENDPOINT + "/api/folders";
+    const fetchNotesUrl = config.API_ENDPOINT + "/api/notes";
+    const options = {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${config.API_TOKEN}`
+      }
+    };
+
+    fetch(fetchFoldersUrl, options)
       .then(response => {
         if (!response.ok) {
-          throw new Error(
-            "There has been an error fetching the folders from local host 9090"
-          );
+          throw new Error("There has been an error fetching the folders.");
         } else {
           return response.json();
         }
@@ -75,12 +85,10 @@ export default class App extends React.Component {
         console.log(error);
       });
 
-    fetch("http://localhost:8000/api/notes")
+    fetch(fetchNotesUrl, options)
       .then(response => {
         if (!response.ok) {
-          throw new Error(
-            "There has been an error fetching the notes from local host 9090"
-          );
+          throw new Error("There has been an error fetching the notes.");
         } else {
           return response.json();
         }
