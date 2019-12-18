@@ -90,7 +90,6 @@ class AddNote extends Component {
         }
       })
       .then(data => {
-        console.log(data);
         this.setState({
           note_name: {
             value: "",
