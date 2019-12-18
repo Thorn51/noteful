@@ -10,8 +10,10 @@ export default class NoteMain extends React.Component {
 
     const note =
       notes.length === 0
-        ? "Loading Notes"
-        : this.context.notes[this.props.match.params.noteId - 1];
+        ? "Loading Note"
+        : notes.filter(
+            note => note.id === parseInt(this.props.match.params.noteId)
+          );
 
     return (
       <React.Fragment>
@@ -20,7 +22,7 @@ export default class NoteMain extends React.Component {
         ) : (
           <section className="notes_section">
             <div className="note">
-              <h2 className="note_name">{note.note_name}</h2>
+              <h2 className="note_name">{note[0].note_name}</h2>
               <div className="note_modification">
                 <p className="mod_date">
                   Date modified on {""}{" "}
@@ -35,7 +37,7 @@ export default class NoteMain extends React.Component {
               </div>
             </div>
             <div>
-              <p className="note_content">{note.note_text}</p>
+              <p className="note_content">{note[0].note_text}</p>
             </div>
           </section>
         )}
