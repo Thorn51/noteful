@@ -17,8 +17,6 @@ export default class NoteSidebar extends React.Component {
         <p>Loading</p>
       );
 
-    console.log(folder);
-
     return (
       <aside className="folder_sidebar">
         <div className="note_sidebar">
